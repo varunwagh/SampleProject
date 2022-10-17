@@ -1,28 +1,23 @@
 import React from "react";
 
 function App() {
+  setInterval(updateTime, 1000);
+  const now = new Date().toLocaleTimeString();
+  console.log(now);
 
-const [count, setCount] = React.useState(0);
+  const [time, setTime] = React.useState(now);
 
-function Increase (){
-  setCount (count+1)
-}
+  function updateTime() {
+    const newTime = new Date().toLocaleTimeString();
+    setTime(newTime);
+  }
 
-function Decrease (){
-  setCount(count-1)
-}
-
-
-
-  return (<div className="container">
-    <h1>{count}</h1>
-    <button onClick={Increase}>+</button>
-    <button onClick={Decrease}>-</button>
-    <button onClick={function (){ return setCount(0)
-    }}>0</button>
-  </div>
-);
-
+  return (
+    <div className="container">
+      <h1>{time}</h1>
+      <button>Get Time</button>
+    </div>
+  );
 }
 
 export default App;
